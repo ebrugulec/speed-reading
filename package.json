@@ -1,18 +1,25 @@
 {
+  "homepage": "http://ebrugulec.com/speed-reading",
   "name": "speed-read",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.6.1",
+    "node-sass": "^4.11.0",
     "react": "^16.6.3",
+    "react-addons-update": "^15.6.2",
     "react-dom": "^16.6.3",
+    "react-modal": "^3.6.1",
+    "react-motion": "^0.5.2",
     "react-scripts": "2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -22,5 +29,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
 }

@@ -55,21 +55,12 @@ class StopWatch extends React.Component {
       }
   }
   render() {
-      console.log(this.props.start)
       if(this.props.start === false){
         clearInterval(this.incrementer);
       }
     return (
       <div className="stopwatch">
-        <h1 className="stopwatch-timer">{formattedSeconds(this.state.secondsElapsed)}</h1>
-        
-        {(this.state.secondsElapsed !== 0 &&
-          this.incrementer !== this.state.lastClearedIncrementer
-          ? <Button onClick={this.handleLabClick.bind(this)}>lab</Button>
-          : null
-        )}
-
-
+        <h5 className="stopwatch-timer">{formattedSeconds(this.state.secondsElapsed)}</h5>
         {(this.state.secondsElapsed !== 0 &&
           this.incrementer === this.state.lastClearedIncrementer
           ? <Button onClick={this.handleResetClick.bind(this)}>reset</Button>

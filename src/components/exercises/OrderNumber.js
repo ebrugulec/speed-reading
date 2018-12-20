@@ -15,18 +15,21 @@ class OrderNumber extends Component {
 
     handleNumberClick(number) {
         let currentNumber = this.state.currentNumber
-
         if(number === currentNumber){
             this.setState({ currentNumber: currentNumber + 1 })
-        }else if(number === 5){
-            this.setState({ismounted: false})
+            if(currentNumber === 25){
+                this.setState({
+                    ismounted: false,
+                    currentNumber: ''
+                })
+            }
         }
     }
 
     componentWillMount(){
         var arr = []
-        while(arr.length < 5){
-            var r = Math.floor(Math.random()*5) + 1;
+        while(arr.length < 25){
+            var r = Math.floor(Math.random()*25) + 1;
             if(arr.indexOf(r) === -1) arr.push(r);
         }
         this.setState({numbers: arr})
@@ -45,26 +48,27 @@ class OrderNumber extends Component {
 
     componentWillUnmount() {
         this._ismounted = false;
-     }
+    }
+
     render(){
         const numbers = this.state.numbers
         const currentNumber = this.state.currentNumber
-        console.log(this._ismounted)
         return(
-            <div>
-                <StopWatch start={this.state.ismounted}/>
-                Next Number: {currentNumber}
+            <div className={"row"}>
+                <div className={"row s6"}><span>Sort numbers</span></div>
                 <div>
                     {numbers.map((number, i) => (
-                                <span key={i}>
-                                    <button variant="outlined" color="secondary" value={number} onClick={() => this.handleNumberClick(number)}>
-                                        {number}
-                                    </button>
-                                    {((i+1) % 5) === 0 &&
-                                        <br/>
-                                    }
-                                </span>
+                        <span key={i}>
+                            <button variant="outlined" color="secondary" className={"waves-effect waves-light btn deep-purple lighten-2 order-number-buttons"} value={number} onClick={() => this.handleNumberClick(number)}>
+                                {number}
+                            </button>
+                            {((i+1) % 5) === 0 &&
+                                <br/>
+                            }
+                        </span>
                     ))}
+                Next Number: {currentNumber}
+                <StopWatch start={this.state.ismounted}/>
                 </div>
             </div>
         )
